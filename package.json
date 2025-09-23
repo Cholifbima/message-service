@@ -1,0 +1,50 @@
+{
+  "name": "aws-sqs-messaging-service",
+  "version": "1.0.0",
+  "description": "Real-time messaging service with AWS SQS integration, Publisher-Subscriber model, and React frontend",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "start": "node server/index.js",
+    "build": "npm run client:build",
+    "client:dev": "cd client && npm start",
+    "client:build": "cd client && npm run build",
+    "client:install": "cd client && npm install",
+    "server:dev": "cd server && npm run dev",
+    "server:start": "cd server && npm start",
+    "server:install": "cd server && npm install",
+    "install:all": "npm install && npm run client:install && npm run server:install",
+    "deploy:build": "npm run client:build && npm run server:install --production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "messaging",
+    "aws-sqs",
+    "websocket",
+    "publisher-subscriber",
+    "real-time",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": {
+    "name": "Cholifbima",
+    "url": "https://github.com/Cholifbima"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cholifbima/message-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cholifbima/message-service/issues"
+  },
+  "homepage": "https://github.com/Cholifbima/message-service#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
