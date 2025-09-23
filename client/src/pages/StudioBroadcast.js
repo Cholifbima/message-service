@@ -859,13 +859,7 @@ const StudioBroadcast = ({ currentUser }) => {
             Messages Sent
           </StatLabel>
         </StatCard>
-        <StatCard>
-          <StatNumber>{stats.deliveryRate}%</StatNumber>
-          <StatLabel>
-            <TrendingUp size={16} />
-            Delivery Rate
-          </StatLabel>
-        </StatCard>
+        {/* Delivery Rate card removed per product request */}
       </StatsGrid>
 
       <MainContent>
@@ -1113,12 +1107,7 @@ const StudioBroadcast = ({ currentUser }) => {
                 </div>
               </FormGroup>
 
-              {!process.env.REACT_APP_AWS_CONFIGURED && (
-                <SuccessMessage>
-                  <AlertCircle size={16} />
-                  Mode Development: Channel akan dibuat tanpa AWS SQS. Fitur messaging tetap berfungsi via WebSocket.
-                </SuccessMessage>
-              )}
+              {/* Development mode banner removed */}
 
               <ModalActions>
                 <ModalButton

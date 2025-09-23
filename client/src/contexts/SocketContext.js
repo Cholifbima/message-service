@@ -36,11 +36,8 @@ export const SocketProvider = ({ children }) => {
         setReconnectAttempts(0);
         
         // Only show success toast on first connect or after failed attempts
-        if (reconnectAttempts > 0) {
-          toast.success('🔗 Reconnected to messaging service');
-        } else {
-          console.log('🔗 WebSocket: Initial connection established');
-        }
+        // Suppress UI toast; keep console log only
+        console.log('🔗 WebSocket: Connection established');
       });
 
       newSocket.on('disconnect', (reason) => {
@@ -48,9 +45,7 @@ export const SocketProvider = ({ children }) => {
         setConnected(false);
         
         // Only show error toast for unexpected disconnects, not server restarts
-        if (reason !== 'transport close' && reason !== 'transport error') {
-          toast.error('⚠️ Connection lost. Trying to reconnect...');
-        }
+        // Suppress user-facing toast on disconnect
       });
 
       newSocket.on('reconnect_attempt', (attemptNumber) => {
@@ -60,7 +55,6 @@ export const SocketProvider = ({ children }) => {
 
       newSocket.on('reconnect_failed', () => {
         console.log('💥 WebSocket: Failed to reconnect after all attempts');
-        toast.error('❌ Could not reconnect to messaging service');
       });
 
       newSocket.on('new-message', (data) => {
@@ -89,9 +83,7 @@ export const SocketProvider = ({ children }) => {
         setReconnectAttempts(prev => prev + 1);
         
         // Only show error after multiple failed attempts
-        if (reconnectAttempts >= 2) {
-          toast.error('🔌 Connection issues. Please check your internet.');
-        }
+        // Suppress repeated error toasts
       });
 
       setSocket(newSocket);
