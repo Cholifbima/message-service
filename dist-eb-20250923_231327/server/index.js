@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -120,10 +119,6 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/users', userRoutes);
 
-// Serve React build (static files)
-const staticDir = path.resolve(__dirname, '../client/build');
-app.use(express.static(staticDir));
-
 
 // Socket.IO connection handling
 io.on('connection', (socket) => {
@@ -144,13 +139,6 @@ io.on('connection', (socket) => {
   });
 });
 
-// SPA fallback: send index.html for non-API routes
-app.get('*', (req, res, next) => {
-  const isApi = req.path.startsWith('/api') || req.path.startsWith('/health') || req.path.startsWith('/aws-debug') || req.path.startsWith('/admin');
-  if (isApi) return next();
-  res.sendFile(path.join(staticDir, 'index.html'));
-});
-
 // Global error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -160,12 +148,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler (only for API routes)
+// 404 handler
 app.use('*', (req, res) => {
-  if (req.path.startsWith('/api')) {
-    return res.status(404).json({ error: 'Route not found' });
-  }
-  res.sendFile(path.join(staticDir, 'index.html'));
+  res.status(404).json({ error: 'Route not found' });
 });
 
 const PORT = process.env.PORT || 5000;
