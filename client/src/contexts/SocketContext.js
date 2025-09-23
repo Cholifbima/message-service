@@ -20,7 +20,9 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     const connectSocket = () => {
-      const newSocket = io(process.env.REACT_APP_SERVER_URL || 'http://localhost:5000', {
+      const originBase = typeof window !== 'undefined' ? window.location.origin : '';
+      const serverUrl = process.env.REACT_APP_SERVER_URL || originBase || 'http://localhost:5000';
+      const newSocket = io(serverUrl, {
         autoConnect: true,
         reconnection: true,
         reconnectionDelay: 1000,
