@@ -37,12 +37,18 @@ const Title = styled.h1`
   color: white;
   margin: 0;
   letter-spacing: -1px;
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin: 0.5rem 0 0 0;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const WelcomeCard = styled(motion.div)`
@@ -54,6 +60,9 @@ const WelcomeCard = styled(motion.div)`
   width: 100%;
   backdrop-filter: blur(20px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
 `;
 
 const WelcomeTitle = styled.h2`
@@ -87,6 +96,9 @@ const RoleGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const RoleCard = styled(motion.div)`
@@ -102,6 +114,9 @@ const RoleCard = styled(motion.div)`
     border-color: #667eea;
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  }
+  @media (max-width: 768px) {
+    padding: 1.25rem;
   }
 `;
 

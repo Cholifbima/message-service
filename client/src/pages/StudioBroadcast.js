@@ -46,6 +46,12 @@ const Header = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   backdrop-filter: blur(10px);
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
 `;
 
 const HeaderLeft = styled.div`
@@ -76,6 +82,9 @@ const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -120,6 +129,12 @@ const MainContent = styled.div`
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  @media (max-width: 992px) {
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const LeftPanel = styled.div`
@@ -140,6 +155,9 @@ const Card = styled(motion.div)`
   padding: 1.5rem;
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const StatsGrid = styled.div`
@@ -147,6 +165,13 @@ const StatsGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-bottom: 1.5rem;
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
 `;
 
 const StatCard = styled.div`
