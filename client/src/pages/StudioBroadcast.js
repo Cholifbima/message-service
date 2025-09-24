@@ -24,7 +24,10 @@ import { useAuth } from '../contexts/AuthContext';
 
 const Container = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:
+    radial-gradient(1200px circle at 20% -10%, rgba(21, 112, 255, 0.18), transparent 40%),
+    radial-gradient(1000px circle at 80% 0%, rgba(0, 186, 255, 0.12), transparent 35%),
+    linear-gradient(180deg, #0c1220 0%, #0a0f1a 100%);
   padding: 1rem;
   
   @keyframes spin {

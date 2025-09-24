@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
+import Particles from './components/Particles';
 import HomePage from './pages/HomePage';
 import StudioBroadcast from './pages/StudioBroadcast';
 import SubscriberHub from './pages/SubscriberHub';
@@ -9,7 +10,9 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  background: linear-gradient(135deg, #0e0e12 0%, #151520 100%);
+  overflow: hidden;
 `;
 
 const LoadingScreen = styled.div`
@@ -37,6 +40,16 @@ function AppRoutes() {
   return (
     <SocketProvider>
       <AppContainer>
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
         <Routes>
           <Route 
             path="/" 

@@ -1,0 +1,17 @@
+.animated-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--grid-color) 1px, transparent 1px) 0 0 / var(--grid-size) var(--grid-size),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px) 0 0 / var(--grid-size) var(--grid-size);
+  animation: grid-move 30s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size); }
+}
+
+
